@@ -1,0 +1,81 @@
+name: aftercarepilot
+services:
+  db:
+    image: ${POSTGRES_IMAGE:-postgres:17-bookworm@sha256:3645570cccdfa447589da9f57dd740faa29b30938e861289a5574b6ca6b03826}
+    environment:
+      POSTGRES_USER: aftercare_bootstrap
+      POSTGRES_DB: postgres
+      POSTGRES_PASSWORD: ${POSTGRES_ADMIN_PASSWORD:?Run scripts.configure_compose}
+      POSTGRES_INITDB_ARGS: --auth-host=scram-sha-256 --auth-local=scram-sha-256
+    ports:
+      - "127.0.0.1:${PG_PORT:-5432}:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD", "pg_isready", "-h", "127.0.0.1", "-U", "aftercare_bootstrap", "-d", "postgres"]
+      interval: 5s
+      timeout: 3s
+      retries: 20
+      start_period: 20s
+    restart: unless-stopped
+  api:
+    build:
+      context: .
+      target: runtime
+      args:
+        PYTHON_IMAGE: ${PYTHON_IMAGE:-python:3.13-slim-bookworm@sha256:a1165e272e578941b84abc79e4ab38a0305cd12803a5c4247979ac7655f4d641}
+    init: true
+    environment:
+      TZ: ${TZ:?Run scripts.configure_compose with the host timezone}
+      DATABASE_URL: ${DATABASE_URL:?Run scripts.configure_compose}
+      READONLY_DATABASE_URL: ${READONLY_DATABASE_URL:?Run scripts.configure_compose}
+      BOOTSTRAP_DATABASE_URL: ${BOOTSTRAP_DATABASE_URL:?Run scripts.configure_compose}
+      OPERATOR_ID: ${OPERATOR_ID:-demo_operator}
+      OPERATOR_TOKEN: ${OPERATOR_TOKEN:?Run scripts.configure_compose}
+      OPENAI_API_KEY: ${OPENAI_API_KEY:-}
+      OPENAI_MODEL: ${OPENAI_MODEL:-qwen3.8-max}
+      OPENAI_BASE_URL: ${OPENAI_BASE_URL:-}
+      TEMPERATURE: ${TEMPERATURE:-0}
+      READ_TRANSPORT: mcp
+      LANGFUSE_PUBLIC_KEY: ""
+      LANGFUSE_SECRET_KEY: ""
+    command: ["python", "-m", "scripts.start_api"]
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${API_PORT:-8000}:8000"
+    healthcheck:
+      test: ["CMD", "python", "-c", "from urllib.request import urlopen; urlopen('http://127.0.0.1:8000/api/v1/ready', timeout=5)"]
+      interval: 5s
+      timeout: 7s
+      retries: 20
+      start_period: 30s
+    restart: unless-stopped
+  ui:
+    build:
+      context: .
+      target: runtime
+      args:
+        PYTHON_IMAGE: ${PYTHON_IMAGE:-python:3.13-slim-bookworm@sha256:a1165e272e578941b84abc79e4ab38a0305cd12803a5c4247979ac7655f4d641}
+    init: true
+    environment:
+      TZ: ${TZ:?Run scripts.configure_compose with the host timezone}
+      API_BASE_URL: http://api:8000/api/v1
+      OPERATOR_ID: ${OPERATOR_ID:-demo_operator}
+      OPERATOR_TOKEN: ${OPERATOR_TOKEN:?Run scripts.configure_compose}
+      APP_TIMEZONE: ${APP_TIMEZONE:-local}
+    command: ["python", "-m", "streamlit", "run", "src/ui/streamlit_app.py", "--server.address", "0.0.0.0", "--server.port", "8501", "--browser.gatherUsageStats", "false"]
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:${UI_PORT:-8501}:8501"
+    healthcheck:
+      test: ["CMD", "python", "-c", "from urllib.request import urlopen; urlopen('http://127.0.0.1:8501/_stcore/health', timeout=5)"]
+      interval: 10s
+      timeout: 7s
+      retries: 10
+    restart: unless-stopped
+volumes:
+  pgdata:

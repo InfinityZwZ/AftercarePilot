@@ -1,6 +1,11 @@
 # Environment
 .env
 .env.local
+.env.*
+!.env.example
+!.env.compose.example
+.local/
+.pytest_cache/
 
 # Python
 __pycache__/
@@ -22,3 +27,21 @@ build/
 # OS
 .DS_Store
 Thumbs.db
+
+# Local learning material and internal development history
+docs/interview/
+docs/superpowers/
+docs/baseline_audit.md
+docs/development_progress.md
+docs/aftercarepilot_design.md
+docs/screenshots/*.jpg
+
+# Publish a small, reproducible synthetic evaluation bundle only.
+evaluation/*
+!evaluation/README.md
+!evaluation/v1/
+evaluation/v1/*
+!evaluation/v1/cases.jsonl
+!evaluation/v1/frozen.json
+!evaluation/v1/review-approvals.json
+!evaluation/public/

@@ -1,0 +1,16 @@
+**
+!requirements.lock.txt
+!alembic.ini
+!alembic/
+!alembic/**
+!src/
+!src/**
+!scripts/
+!scripts/**
+!tests/
+!tests/**
+**/__pycache__
+**/*.pyc
+**/*.log
+**/.env*
+**/*.db

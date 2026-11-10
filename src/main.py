@@ -6,31 +6,44 @@ Run with:
 """
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from contextlib import asynccontextmanager
+import logging
 
 from src.api.routes import router
 from src.config import settings
-from src.services.database import init_db
+from src.storage.database import check_database
+from src.services.proposal_service import ProposalService
+from src.api.errors import register_errors
 from src.observability.langfuse_setup import get_langfuse_client, init_langfuse
 
+logger = logging.getLogger(__name__)
+
+@asynccontextmanager
+async def lifespan(app: FastAPI):
+    check_database()
+    ProposalService().recover_interrupted()
+    try:
+        init_langfuse()
+    except Exception:
+        logger.warning("Optional tracing could not initialize; PostgreSQL workflow remains available")
+    try:
+        yield
+    finally:
+        client = get_langfuse_client()
+        if client:
+            try:
+                client.flush()
+            except Exception:
+                logger.warning("Optional tracing flush failed; business transactions are unaffected")
+
+
 app = FastAPI(
-    title="E-Commerce Support Agent",
-    description="LangGraph ReAct agent for e-commerce customer support",
-    version="1.0.0",
+    title="AftercarePilot",
+    description="AftercarePilot: read-only analysis, versioned review and internal transactional ticket execution",
+    version="2.0.0",
+    lifespan=lifespan,
 )
-
-
-@app.on_event("startup")
-def on_startup():
-    init_db()
-    init_langfuse()
-
-
-@app.on_event("shutdown")
-def on_shutdown():
-    """Flush any pending Langfuse traces before exit."""
-    client = get_langfuse_client()
-    if client:
-        client.flush()
+register_errors(app)
 
 app.add_middleware(
     CORSMiddleware,

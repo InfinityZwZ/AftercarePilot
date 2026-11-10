@@ -1,0 +1,17 @@
+{
+  "folders": [{"path": "."}],
+  "settings": {
+    "explorer.excludeGitIgnore": true,
+    "files.exclude": {
+      "**/__pycache__": true, ".pytest_cache": true,
+      ".local": true, ".venv": true, ".idea": true,
+      "docs/interview": true, "docs/superpowers": true,
+      "docs/baseline_audit.md": true, "docs/development_progress.md": true,
+      "docs/aftercarepilot_design.md": true, "docs/screenshots/*.jpg": true,
+      "evaluation/acceptance-final": true, "evaluation/closure-v1": true,
+      "evaluation/continuation-v1": true, "evaluation/final-v1": true,
+      "evaluation/repair-v2": true, "evaluation/revisions": true
+    },
+    "search.exclude": {".local/**": true, ".venv/**": true, "**/__pycache__/**": true}
+  }
+}

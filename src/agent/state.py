@@ -1,31 +1,26 @@
-"""
-Agent State — the shared state object that flows through the LangGraph.
-"""
 from typing import Annotated, Any
-from langgraph.graph.message import add_messages
 from typing_extensions import TypedDict
+from langgraph.graph.message import add_messages
 
 
-class AgentState(TypedDict):
-    """The state carried through each node in the graph."""
-
-    # Conversation messages (append-only via `add_messages` reducer)
+class AgentState(TypedDict, total=False):
+    proposal_id: str
+    request_id: str
+    revision: int
+    question: str
+    language: str
+    context: dict[str, Any]
     messages: Annotated[list, add_messages]
-
-    # Triage classification result
-    intent: str  # order_status | shipping_tracking | return_request | return_policy | general
-
-    # Entities extracted from the user message
-    order_id: str
-    tracking_number: str
-    customer_email: str
-
-    # Tool call results (populated by tool_node)
-    tool_results: dict[str, Any]
-
-    # Final response to the user
-    final_response: str
-
-    # Production: retry & error handling
-    retry_count: int
-    error_message: str
+    entities: dict[str, Any]
+    intent: str
+    evidence: list[dict[str, Any]]
+    missing_fields: list[str]
+    tool_rounds: int
+    tool_calls: int
+    llm_calls: int
+    schema_repairs: int
+    evidence_completions: int
+    model_draft: dict | None
+    payload: dict | None
+    status: str
+    error: dict | None

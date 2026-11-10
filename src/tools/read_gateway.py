@@ -1,0 +1,9 @@
+from typing import Awaitable, Protocol
+
+from src.domain.schemas import ToolResult
+
+
+class ReadGateway(Protocol):
+    def get_order(self, order_id: str) -> ToolResult | Awaitable[ToolResult]: ...
+    def get_return_policy(self, policy_id: str) -> ToolResult | Awaitable[ToolResult]: ...
+    def check_return_eligibility(self, order_id: str, reason: str | None = None) -> ToolResult | Awaitable[ToolResult]: ...

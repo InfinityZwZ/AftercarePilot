@@ -1,0 +1,19 @@
+{
+  "python": {
+    "reference": "python:3.13-slim-bookworm@sha256:a1165e272e578941b84abc79e4ab38a0305cd12803a5c4247979ac7655f4d641",
+    "linux_amd64_digest": "sha256:f040863673aea2570c3ff6a5c3fb4c673a016cbc5375005ad145915922b6b78a",
+    "image_versions": {
+      "PYTHON_VERSION": "3.13.16"
+    },
+    "status": "registry manifest resolved; runtime verification recorded separately"
+  },
+  "postgres": {
+    "reference": "postgres:17-bookworm@sha256:3645570cccdfa447589da9f57dd740faa29b30938e861289a5574b6ca6b03826",
+    "linux_amd64_digest": "sha256:66aafa11cf15800a3c94763f7e11d1e7b2e37e5e84bc4ce027cb6e1e4bfaf4df",
+    "image_versions": {
+      "PG_MAJOR": "17",
+      "PG_VERSION": "17.11-1.pgdg12+2"
+    },
+    "status": "registry manifest resolved; runtime verification recorded separately"
+  }
+}

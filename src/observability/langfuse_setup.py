@@ -8,7 +8,6 @@ Configure via .env:
 """
 import logging
 import os
-from typing import Optional
 
 from src.config import settings
 
@@ -49,9 +48,5 @@ def get_langfuse_handler():
 
 
 def get_langfuse_client():
+    """Return the client initialized at application startup, if configured."""
     return _client
-    """Returns a Langfuse client for direct logging (scores, events, etc.)."""
-    if not _is_configured():
-        return None
-    _ensure_env()
-    return Langfuse()

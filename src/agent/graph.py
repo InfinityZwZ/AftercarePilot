@@ -1,78 +1,43 @@
-"""
-LangGraph Graph — Production-grade ReAct agent with retry loop.
-
-Flow:
-  START → triage_node ─┬─(needs tools)→ tool_node ─┬─(success)→ response_node → END
-                        │                          │
-                        │                          └─(retryable error, retries < 3)→ tool_node
-                        │
-                        └─(general / no tools)→ response_node → END
-"""
 from langgraph.graph import END, StateGraph
-
+import inspect
 from src.agent.state import AgentState
-from src.agent.nodes import triage_node, tool_node, response_node
-
-MAX_RETRIES = 3
 
 
-def should_use_tools(state: AgentState) -> str:
-    """Router after triage: decide whether to call tools or respond directly."""
-    intent = state.get("intent", "general")
-    if intent in ("general",):
-        return "response"
-    return "tools"
+def after_triage(state):
+    return "end" if state.get("error") or state.get("payload") else "decide"
 
 
-def after_tools(state: AgentState) -> str:
-    """Router after tools: check for errors, retry if possible."""
-    tool_results = state.get("tool_results", {})
-
-    # Check if any tool returned an error
-    has_error = any(
-        str(v).startswith("❌") or "error" in str(v).lower()
-        for v in tool_results.values()
-    )
-
-    retries = state.get("retry_count", 0)
-
-    if has_error and retries < MAX_RETRIES:
-        return "retry"
-    return "response"
+def after_decision(state):
+    if state.get("error"):
+        return "end"
+    return "tools" if state["messages"][-1].tool_calls else "validate"
 
 
-def build_graph() -> StateGraph:
-    """Build and compile the LangGraph state graph with retry loop."""
-
-    workflow = StateGraph(AgentState)
-
-    # -- Add nodes --
-    workflow.add_node("triage", triage_node)
-    workflow.add_node("tools", tool_node)
-    workflow.add_node("response", response_node)
-
-    # -- Add edges --
-    workflow.set_entry_point("triage")
-
-    # Triage → tools or response
-    workflow.add_conditional_edges(
-        "triage",
-        should_use_tools,
-        {"tools": "tools", "response": "response"},
-    )
-
-    # Tools → response or retry
-    workflow.add_conditional_edges(
-        "tools",
-        after_tools,
-        {"retry": "tools", "response": "response"},
-    )
-
-    # Response → END
-    workflow.add_edge("response", END)
-
-    return workflow.compile()
+def after_tools(state):
+    return "end" if state.get("error") else "decide"
 
 
-# Singleton compiled graph
-agent_graph = build_graph()
+def build_graph(agent=None):
+    if agent is None:
+        from src.agent.nodes import AnalysisAgent
+        agent = AnalysisAgent()
+    graph = StateGraph(AgentState)
+    def tracked(handler):
+        async def node(state):
+            agent.remember(state)
+            result = handler(state)
+            if inspect.isawaitable(result):
+                result = await result
+            agent.remember(state, result)
+            return result
+        return node
+    graph.add_node("triage", tracked(agent.triage))
+    graph.add_node("decide", tracked(agent.decide))
+    graph.add_node("tools", tracked(agent.tools))
+    graph.add_node("validate", tracked(agent.validate))
+    graph.set_entry_point("triage")
+    graph.add_conditional_edges("triage", after_triage, {"end": END, "decide": "decide"})
+    graph.add_conditional_edges("decide", after_decision, {"end": END, "tools": "tools", "validate": "validate"})
+    graph.add_conditional_edges("tools", after_tools, {"end": END, "decide": "decide"})
+    graph.add_edge("validate", END)
+    return graph.compile()

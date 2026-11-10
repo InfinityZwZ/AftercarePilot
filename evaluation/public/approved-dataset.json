@@ -1,0 +1,719 @@
+{
+  "dataset_hash": "5580c8e06dec6cdf62312c1e1439cc005c9bf8c72b86e7fd3abd0c447d0a65aa",
+  "approvals": {
+    "TEST-M-036": {
+      "case_hash": "8a779af9b899f4488a2d4a03ac2f6640c02390052cab91c35512cafde86fae3d",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_case_feedback",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-M-037": {
+      "case_hash": "a29de7e60d24b9f8235c04a4ba44b7f55372c4b0995d242a14bf8e046cdd7a81",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_case_feedback",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-M-038": {
+      "case_hash": "ac00c3219d780dc18139e6e178fbadf36856b031211b0782e27a2f9989ccd396",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_case_feedback",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-M-039": {
+      "case_hash": "f7021fde86f89d6574dba9a1053ae9225cefdce1222697adaff3c3f10d8f6d77",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_case_feedback",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-M-041": {
+      "case_hash": "4b915510e018921a66e2201c39b01d11e89945922df499aeaabbab656cf66015",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_case_feedback",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-M-042": {
+      "case_hash": "963fbdeef8e7c5c2b072d15167d92a1aed712532a8bb2ac9b4bd02d4a2971241",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_case_feedback",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-001": {
+      "case_hash": "03e7e2e8efcad4593b11a68269de0f9b22ae5c587d6c28ca27ff49c4b05a5eab",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-002": {
+      "case_hash": "ca6951a84098abaa9279f0af3154125199f9a0cfd85133b6ba5cbf30512e48c7",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-003": {
+      "case_hash": "0390495702f4839c2366cd16a90c226083b7f071b1b20f8c3d5cdb8b16664c26",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-004": {
+      "case_hash": "7458c30c1fdd0582522a9e72a9bbf9b9660342ef8273b938d9a993d31ee86b5d",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-005": {
+      "case_hash": "3efcd9f4f85645d91c01a053a2d541215e3626e8b5ceacb731795cc61efd7dbb",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-006": {
+      "case_hash": "93a98f462130808b88a9dea34decc75e9ed286674f43476164ab87f867909648",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-007": {
+      "case_hash": "35da3342dd00a79ff12a5126c8d32da0ddc7b1862ecda5004196054576d45745",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-008": {
+      "case_hash": "e1f930e2c4a90f4714c3468364d8302b967fbc953b738f74f04163c99fb8c07c",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-009": {
+      "case_hash": "96e4dc707c107b85d957673c84a542543752e82bc8a9cb7cf9c6ddffc530f00c",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-010": {
+      "case_hash": "9bd58b78fdb6f03b89bb43dc0e92d0cb73ced1dcd6185e46f0bbef86157a6ba1",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-011": {
+      "case_hash": "d27208144326c0dd9ffeaf18357d48799e16ff835a7fcd1067e77a4882447f14",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-012": {
+      "case_hash": "d5f0e97ef59a0009e49555f649893c256beb13d9a1b70eb0f8fa1dbfbf542ea0",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-013": {
+      "case_hash": "e5dd07bd8bd62a56db9948bc406b0ae3b3a3524b7219a129d3f6302559b6a2b7",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-014": {
+      "case_hash": "45c8f6a082713f68538f0d34620d267f0e0c063573f22ccdc5e62825c55427bd",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-015": {
+      "case_hash": "c834887441b08b3c30a3564645cfe5e57e2e1b4db139579fe4f7fcdb1b8f452f",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-016": {
+      "case_hash": "88543f64f9184e1a64d5f1c0ea6ead722985f885fafc300673565c89465a12b0",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-017": {
+      "case_hash": "121f0cc099c966da0db31045d09e4e4c94aeb567350874737ed1a9e6ab820c34",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-018": {
+      "case_hash": "694696b6e0cf69ee9a2926583360666e4f4bf9d5c8bdeeb18188f693f24d1750",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-019": {
+      "case_hash": "c7f5fdd5112c5c002c0a0070c7d98d897af2587d83766b83323ac6646d8bd996",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-020": {
+      "case_hash": "4571149fb4c0be617ef56d5546990c9234c59ffef41dc30415183eb4879991b0",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-021": {
+      "case_hash": "415693a97cfe565fc839b4566d0e92a58373d49d37d7973b91e8a131a486c0ab",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-022": {
+      "case_hash": "264a6fed6c7fa639f5c1ea85d7f38f3eb7145ea3f4664cbd36490b4169ee7ab0",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-023": {
+      "case_hash": "a46f50b691aba98fedfa27334c217bf74c003665a537caae74fb581dc0f6b31f",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-024": {
+      "case_hash": "403ef8a0999511be19323d65b25fb02bcbf11cb84884ca667f65236193429308",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-025": {
+      "case_hash": "615d40c7fbded493025e84cd1e98f059f7f8ebd450e7f8998c82b711604dec83",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-026": {
+      "case_hash": "1b770a9efcb57e6eea750aeea6affa0a152b68aefc6283856faa6b2014202b20",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-027": {
+      "case_hash": "ce750a2f824cc5fb22b8b8f6c7fbfad859de22575780c7a985da5f4e21cd8bc9",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-028": {
+      "case_hash": "4dd3ee9a896f6e636f7bed138e7562ae17b199d3c5d3e4f67dd3b29430b3ee60",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-029": {
+      "case_hash": "26c1e1bff3721acb332c472e0b37fbdaa5a91b863f6c3002fbf4e80ff1fbca60",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-E-030": {
+      "case_hash": "30c2c75d24f3c3284fbc61465669b7266abcb1b51ec60a8bc5146fe949e70dcb",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:46:27.743326+08:00",
+      "review_method": "explicit_engineering_expectations_acceptance",
+      "notes": "依据用户本条明确确认录入；时间为记录时刻。认可预期不代表已经执行、评分或逐字段审查源码。",
+      "evidence": "36按我的，41待补充吧，37383942 按你倾向的追问来设计，工程案例就按照你的预期来"
+    },
+    "TEST-M-001": {
+      "case_hash": "83b44609ef47cd68897fbb7407911c7665530c07c6a42ab3e1905eccb3e36317",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-002": {
+      "case_hash": "e64e2941d0949ec1065e73aede01bf2dda4ef0bfafdcca3c7ad5fd71794f8fce",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-003": {
+      "case_hash": "40e379db25df8564aa07769ff2c309513ed9f3fdedf68f51ef80d9b0d1b79462",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-004": {
+      "case_hash": "a56592ab21022c335607cf357027cbc66ad5fba9059593d152cd9c4ac2232e48",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-005": {
+      "case_hash": "8d489781c16a4b7e954fae6c77d266764e6c5c7e404c4fc55a5e2fa64fda4ac0",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-006": {
+      "case_hash": "36e784139ff7471cb525babfc7745e09de5042a8587739592f0c2878f25c22e1",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-007": {
+      "case_hash": "8a6eeda9404d9c0790f7ef79a3b333e4635c8552a8589b1fcf6c15b2c10eb6a6",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-008": {
+      "case_hash": "99bbb143f7d0237b979bc73374512810112c083f3d1d93c9d7098ce406953e2e",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-009": {
+      "case_hash": "8037a5824aa7362ed5b4a50ff3deba36ff83a8e2195a74992a44817270892b56",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-010": {
+      "case_hash": "c7f040077cb57947d1eb124c5ed2395106855ec83d6ffdaefe1dce468b8f723e",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-011": {
+      "case_hash": "b13e560d88d4faec4c21bd64af049b882e94ef1586aa16a4a2849bf1ac55fbd1",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-012": {
+      "case_hash": "1aaef26d463e8198034029968ac917aec193e940f076a7a4f0d5ce04a847fd4f",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-013": {
+      "case_hash": "fb24532a536d6a742f376486fee0d8e5c14f55d21080aaf550d4bb87e40a01ae",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-014": {
+      "case_hash": "7882cb11006761663183ce892754fee67eb00af08b6cc17691c79712bfcc7019",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-015": {
+      "case_hash": "59d047ad64e0ccebd040e4aa48a28880beba34d66c326b706a85b21ccf8e404e",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-016": {
+      "case_hash": "9340c1bccd3329c8412ab1b8a3916f21e0dc21b06d5a6b0715de521f2571d74b",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-017": {
+      "case_hash": "ebb7d4c9c795c3ff8dc7f74aba1c95ac017f29cd9c0d8472eaf4401e1d949019",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-018": {
+      "case_hash": "455a61e4250594fe66d5398e0d8e2789787907119bb63878c0c238f8de081357",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-019": {
+      "case_hash": "11ecb711f65f05005ef792df6961e3dd799f978f7259cc0b0e981f3a04735ef7",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-020": {
+      "case_hash": "b6403ae8583ca9c3a2b39cf509179f5e6c4419a1199a9759e07c29497b720c0c",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-021": {
+      "case_hash": "10ce094b9c374deca9296859016e5d88cfed9630499382d9a709e43e079fb35d",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-022": {
+      "approved": true,
+      "reviewer": "用户",
+      "reviewed_at": "2026-11-06T23:47:29.065967+08:00",
+      "case_hash": "f23e68f80c1ccfb5ec1eb2ec3d0e2af464c12967bda2aec83f4a28b220f3c6a0",
+      "approval_source": "用户对话：三个tg"
+    },
+    "TEST-M-023": {
+      "approved": true,
+      "reviewer": "用户",
+      "reviewed_at": "2026-11-06T23:47:29.065967+08:00",
+      "case_hash": "6ae8eb7f7ef09e7cd5714a9c46617c02a2e6ce8c8b4ac6a0e55ae7db79e4b1e1",
+      "approval_source": "用户对话：三个tg"
+    },
+    "TEST-M-024": {
+      "case_hash": "ff2db9926efb7227b4e36984fe4a3d3bbf611375d1ade61c27f427cfa3ec1d02",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-025": {
+      "case_hash": "8131c50a2a56776abe195118c1814137547552eb71e245d83e66e60de767a246",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-026": {
+      "approved": true,
+      "reviewer": "用户",
+      "reviewed_at": "2026-11-06T23:47:29.065967+08:00",
+      "case_hash": "cef9e6ab5be0fefdd1cdddd9b42ffeb8a44d0872761a6bf5ddf2a8352213fb01",
+      "approval_source": "用户对话：三个tg"
+    },
+    "TEST-M-027": {
+      "case_hash": "4e6b9b372f6722d408dd5353b9395d52d675f8ad7f3629d342d98b381c0a2887",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-028": {
+      "case_hash": "56aa3fcea058040051107f7995ec8aeef713fc502d8a1c71a4716eacb7566697",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-029": {
+      "case_hash": "6f60708b78b3f3a00734f49eaa2569360adb1920afce4264df5b60d578cafd4d",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-030": {
+      "case_hash": "451599aaffe174eee60c6304bc62ed9e4bb8ef44563cac7282d11abee0f539a8",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-031": {
+      "case_hash": "dce25aead277171797538095ace5b61c4feffbc7d2421a707fbffc7579e9d673",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-032": {
+      "case_hash": "6681328281bd0d3c0ce613c38057aae4c7c09934972abfbb6fabb10879437c85",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-033": {
+      "case_hash": "b12a0f048f68c63b4fc38c858cc76bafad8c228721b356f592838c64fd84ec3e",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-034": {
+      "case_hash": "49a56b3bf50a2f7012baf20d8394d9ad96e7f687e79d6fa6399fdb1508c5eb0e",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-035": {
+      "case_hash": "4b66bad66a6d6b836b54ac4b23ae6c2cc6fcd5a7dada0f36789403a161fdf38a",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-040": {
+      "case_hash": "0701f5ebb857a4480d1987c98943fac4096502f39b6ca02f7bca37abe4d4882d",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-043": {
+      "case_hash": "516074dc7a4274a012d0a50067defd3c5e707e12939904f08074692f3c4ccb9a",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-044": {
+      "case_hash": "c6d5ed3a155ab24b0abb66417e72b4c620cb878e9e6af5511671c8ee4d159283",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-045": {
+      "case_hash": "41979044ffad4c094eb72ebf86eb1bd195644c89d72fcf8cc41919dc5d0d3e93",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-046": {
+      "case_hash": "b3667164f4578adfb00469604e86d7e6fcbc50e260309e28cb18380c1534b22b",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-047": {
+      "case_hash": "03d2687faba4ef6e237909cd7f33090dbad7b1f4ff053ab54ecd7c172667ec7e",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-048": {
+      "case_hash": "b5cac618ac7cdaf38351c194b0b4b27bafb4493e56f4d86da224ff3e705bd9f2",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-049": {
+      "case_hash": "62770b2de6eb66d264b088a12fa2578e02689ec11f03838f51caba261bef02bf",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    },
+    "TEST-M-050": {
+      "case_hash": "e2de8f8e353367203a67d26a3afd79f25ec39f0b7540f5125174d71e647b551a",
+      "approved": true,
+      "reviewer": "用户（本会话明确确认）",
+      "reviewed_at": "2026-11-06T20:49:31.496895+08:00",
+      "review_method": "explicit_remaining_cases_confirmation",
+      "evidence": "其他都审核完了",
+      "notes": "接续前一轮36条确认，用户确认其余44条预期；时间为记录时刻。不代表模型回复人工评分。"
+    }
+  }
+}

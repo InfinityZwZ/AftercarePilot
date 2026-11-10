@@ -1,0 +1,670 @@
+{
+  "measured_run": "test-live-closure-final-v2",
+  "historical_engineering": {
+    "tests": 388,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "passed": 388
+  },
+  "offline": {
+    "dev": {
+      "planned": 40,
+      "completed": 40,
+      "passed": 40,
+      "failed": 0,
+      "not_run": 0,
+      "success_rate": 1.0,
+      "checks": {
+        "amount": {
+          "correct": 7,
+          "denominator": 7,
+          "rate": 1.0
+        },
+        "analysis_creates_no_ticket": {
+          "correct": 25,
+          "denominator": 25,
+          "rate": 1.0
+        },
+        "confirmation_idempotent": {
+          "correct": 7,
+          "denominator": 7,
+          "rate": 1.0
+        },
+        "confirmed_ticket_verified": {
+          "correct": 7,
+          "denominator": 7,
+          "rate": 1.0
+        },
+        "currency": {
+          "correct": 7,
+          "denominator": 7,
+          "rate": 1.0
+        },
+        "deadline": {
+          "correct": 7,
+          "denominator": 7,
+          "rate": 1.0
+        },
+        "draft_confirmation_no_ticket": {
+          "correct": 16,
+          "denominator": 16,
+          "rate": 1.0
+        },
+        "evidence": {
+          "correct": 25,
+          "denominator": 25,
+          "rate": 1.0
+        },
+        "intent": {
+          "correct": 25,
+          "denominator": 25,
+          "rate": 1.0
+        },
+        "kind": {
+          "correct": 25,
+          "denominator": 25,
+          "rate": 1.0
+        },
+        "missing_fields": {
+          "correct": 25,
+          "denominator": 25,
+          "rate": 1.0
+        },
+        "no_duplicate_ticket": {
+          "correct": 7,
+          "denominator": 7,
+          "rate": 1.0
+        },
+        "no_wrong_ticket": {
+          "correct": 7,
+          "denominator": 7,
+          "rate": 1.0
+        },
+        "order_id": {
+          "correct": 25,
+          "denominator": 25,
+          "rate": 1.0
+        },
+        "orders_and_policies_unchanged": {
+          "correct": 25,
+          "denominator": 25,
+          "rate": 1.0
+        },
+        "reason": {
+          "correct": 25,
+          "denominator": 25,
+          "rate": 1.0
+        },
+        "status": {
+          "correct": 25,
+          "denominator": 25,
+          "rate": 1.0
+        },
+        "tool_arguments": {
+          "correct": 25,
+          "denominator": 25,
+          "rate": 1.0
+        },
+        "tools": {
+          "correct": 25,
+          "denominator": 25,
+          "rate": 1.0
+        },
+        "turn_1": {
+          "correct": 3,
+          "denominator": 3,
+          "rate": 1.0
+        }
+      },
+      "schema": {
+        "schema_first_pass": {
+          "observed": {
+            "correct": 25,
+            "denominator": 25,
+            "rate": 1.0
+          },
+          "all_model_cases": {
+            "correct": 25,
+            "denominator": 25,
+            "rate": 1.0
+          },
+          "unobserved": 0
+        },
+        "schema_final_pass": {
+          "observed": {
+            "correct": 25,
+            "denominator": 25,
+            "rate": 1.0
+          },
+          "all_model_cases": {
+            "correct": 25,
+            "denominator": 25,
+            "rate": 1.0
+          },
+          "unobserved": 0
+        }
+      },
+      "latency_ms": {
+        "p50": 3432.802199968137,
+        "p95": 6358.679700060748
+      },
+      "request_latency_ms": {
+        "p50": 0.03170000854879618,
+        "p95": 0.07730000652372837
+      },
+      "provider_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0
+    },
+    "test": {
+      "planned": 80,
+      "completed": 80,
+      "passed": 80,
+      "failed": 0,
+      "not_run": 0,
+      "success_rate": 1.0,
+      "checks": {
+        "amount": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "analysis_creates_no_ticket": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "confirmation_idempotent": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "confirmed_ticket_verified": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "currency": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "deadline": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "draft_confirmation_no_ticket": {
+          "correct": 7,
+          "denominator": 7,
+          "rate": 1.0
+        },
+        "evidence": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "intent": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "kind": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "missing_fields": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "no_duplicate_ticket": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "no_wrong_ticket": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "order_id": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "orders_and_policies_unchanged": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "reason": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "status": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "tool_arguments": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "tools": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "turn_1": {
+          "correct": 6,
+          "denominator": 6,
+          "rate": 1.0
+        }
+      },
+      "schema": {
+        "schema_first_pass": {
+          "observed": {
+            "correct": 39,
+            "denominator": 39,
+            "rate": 1.0
+          },
+          "all_model_cases": {
+            "correct": 39,
+            "denominator": 50,
+            "rate": 0.78
+          },
+          "unobserved": 11
+        },
+        "schema_final_pass": {
+          "observed": {
+            "correct": 39,
+            "denominator": 39,
+            "rate": 1.0
+          },
+          "all_model_cases": {
+            "correct": 39,
+            "denominator": 50,
+            "rate": 0.78
+          },
+          "unobserved": 11
+        }
+      },
+      "latency_ms": {
+        "p50": 3100.251300027594,
+        "p95": 4990.381899988279
+      },
+      "request_latency_ms": {
+        "p50": 0.026699970476329327,
+        "p95": 0.08549995254725218
+      },
+      "provider_calls": 0,
+      "input_tokens": 0,
+      "output_tokens": 0
+    }
+  },
+  "live": {
+    "run_id": "test-live-closure-final-v2",
+    "model": "glm-5.3",
+    "model_options": {
+      "enable_thinking": true,
+      "reasoning_effort": "low"
+    },
+    "metrics": {
+      "planned": 50,
+      "completed": 50,
+      "passed": 50,
+      "failed": 0,
+      "not_run": 0,
+      "success_rate": 1.0,
+      "checks": {
+        "amount": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "analysis_creates_no_ticket": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "confirmation_idempotent": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "confirmed_ticket_verified": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "currency": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "deadline": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "draft_confirmation_no_ticket": {
+          "correct": 7,
+          "denominator": 7,
+          "rate": 1.0
+        },
+        "evidence": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "intent": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "kind": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "missing_fields": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "no_duplicate_ticket": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "no_wrong_ticket": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "order_id": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "orders_and_policies_unchanged": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "reason": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "status": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "tool_arguments": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "tools": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "turn_1": {
+          "correct": 6,
+          "denominator": 6,
+          "rate": 1.0
+        }
+      },
+      "schema": {
+        "schema_first_pass": {
+          "observed": {
+            "correct": 38,
+            "denominator": 39,
+            "rate": 0.9743589743589743
+          },
+          "all_model_cases": {
+            "correct": 38,
+            "denominator": 50,
+            "rate": 0.76
+          },
+          "unobserved": 11
+        },
+        "schema_final_pass": {
+          "observed": {
+            "correct": 39,
+            "denominator": 39,
+            "rate": 1.0
+          },
+          "all_model_cases": {
+            "correct": 39,
+            "denominator": 50,
+            "rate": 0.78
+          },
+          "unobserved": 11
+        }
+      },
+      "latency_ms": {
+        "p50": 12353.760399972089,
+        "p95": 23881.66990003083
+      },
+      "request_latency_ms": {
+        "p50": 2369.8659000219777,
+        "p95": 6755.894400062971
+      },
+      "provider_calls": 162,
+      "input_tokens": 168039,
+      "output_tokens": 11473
+    },
+    "summary": {
+      "planned": 50,
+      "completed": 50,
+      "failed": 0,
+      "not_run": 0,
+      "complete": true,
+      "by_lane": {
+        "model": {
+          "passed": 50,
+          "completed": 50,
+          "rate": 1.0
+        },
+        "engineering": {
+          "passed": 0,
+          "completed": 0,
+          "rate": null
+        }
+      },
+      "raw_model_metrics": {
+        "intent": {
+          "correct": 39,
+          "denominator": 39
+        },
+        "order_id": {
+          "correct": 39,
+          "denominator": 39
+        },
+        "reason": {
+          "correct": 39,
+          "denominator": 39
+        }
+      },
+      "metrics": {
+        "amount": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "analysis_creates_no_ticket": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "confirmation_idempotent": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "confirmed_ticket_verified": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "currency": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "deadline": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "draft_confirmation_no_ticket": {
+          "correct": 7,
+          "denominator": 7,
+          "rate": 1.0
+        },
+        "evidence": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "intent": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "kind": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "missing_fields": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "no_duplicate_ticket": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "no_wrong_ticket": {
+          "correct": 28,
+          "denominator": 28,
+          "rate": 1.0
+        },
+        "order_id": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "orders_and_policies_unchanged": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "reason": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "status": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "tool_arguments": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "tools": {
+          "correct": 50,
+          "denominator": 50,
+          "rate": 1.0
+        },
+        "turn_1": {
+          "correct": 6,
+          "denominator": 6,
+          "rate": 1.0
+        }
+      },
+      "intent_macro_f1": 1.0,
+      "intent_macro_f1_supported_labels": 5,
+      "analysis_latency_ms": {
+        "p50": 12353.760399972089,
+        "p95": 23881.66990003083
+      },
+      "human_reviewed": 0,
+      "engineering": {
+        "completed": 0
+      },
+      "model": {
+        "completed": 50,
+        "provider_invoked": 39
+      },
+      "coverage_complete": false,
+      "split_planned": 80,
+      "mode": "live",
+      "provider_calls": 162,
+      "input_tokens": 168039,
+      "output_tokens": 11473,
+      "usage_unknown_requests": 0,
+      "usage_complete": true,
+      "safety_blockers": [],
+      "automatic_assertions_passed": false,
+      "acceptance_passed": false,
+      "model_request_latency_ms": {
+        "p50": 2369.8659000219777,
+        "p95": 6755.894400062971
+      },
+      "family_count": null,
+      "schema_first_pass": {
+        "denominator": 39,
+        "correct": 38,
+        "rate": 0.9743589743589743
+      },
+      "schema_final_pass": {
+        "denominator": 39,
+        "correct": 39,
+        "rate": 1.0
+      }
+    },
+    "human_reviewed": 0,
+    "source_hash": "e3bab2df591552cb27dd032a726aa69751d291e68c42cd7557fcf1b471ec917f",
+    "prompt_hash": "f361e1cce94c53caa5e104b7ebd4a25928e32ba2b979d219846e7bcdd37b9577"
+  },
+  "human_scope": "原48条只认可原封不动的同一输出；2条修复新输出已获用户全tg认可。本轮新单模型50条回复质量尚无人评，不能把旧评分移植到该批次。",
+  "budget": {
+    "attempts": 1104,
+    "limits": {
+      "calls": 1200,
+      "input": 2400000,
+      "output": 600000,
+      "dev_calls": 60
+    },
+    "known_usage": {
+      "input": 1119262,
+      "output": 204928
+    },
+    "unknown_reserved": {
+      "input": 46720,
+      "output": 28736
+    },
+    "unknown_attempts": 9,
+    "accounted_totals": {
+      "input": 1165982,
+      "output": 233664
+    },
+    "exact_usage_complete": false,
+    "rmb_cost": null
+  }
+}
