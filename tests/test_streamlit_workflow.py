@@ -39,6 +39,11 @@ def button(app, label):
     return next(item for item in app.button if item.label == label)
 
 
+def submit_ticket(app):
+    button(app, "确认并创建内部售后工单").click().run()
+    button(app, "最终确认建单").click().run()
+
+
 def start_ui(api, monkeypatch):
     import src.ui.api_client as client_module
     transport = RecordedTransport(api)
@@ -67,8 +72,8 @@ def test_ui_forms_approve_edit_execute_and_rerun_no_post(api, stage3, monkeypatc
     app.text_area(key="draft_" + selected).set_value("保存新草稿，重新审批。").run()
     button(app, "保存修改").click().run()
     assert not app.exception and app.session_state["selected_proposal"] != selected
-    assert not button(app, "确认并创建工单").disabled
-    button(app, "确认并创建工单").click().run()
+    assert not button(app, "确认并创建内部售后工单").disabled
+    submit_ticket(app)
     assert not app.exception and counts(stage3) == (1, 1)
     posts_before = sum(method == "POST" for method, _ in transport.calls)
     app.run()
@@ -93,12 +98,12 @@ def test_ui_lost_response_stays_unknown_until_independent_verification(api, stag
     app, transport = start_ui(api, monkeypatch)
     analyze_ui(app)
     transport.lose_execute_response = True
-    button(app, "确认并创建工单").click().run()
+    submit_ticket(app)
     assert not app.exception and counts(stage3) == (1, 1)
     selected = app.session_state["selected_proposal"]
     assert selected in app.session_state["unknown_execution"]
     assert not app.success
-    assert button(app, "确认并创建工单").disabled
+    assert not any(item.label == "确认并创建内部售后工单" for item in app.button)
     button(app, "查询提交结果").click().run()
     assert not app.exception
     assert selected not in app.session_state["unknown_execution"]
@@ -110,10 +115,10 @@ def test_ui_verification_read_failure_blocks_resubmit_until_query(api, stage3, m
     app, transport = start_ui(api, monkeypatch)
     analyze_ui(app)
     transport.block_execution_reads = True
-    button(app, "确认并创建工单").click().run()
+    submit_ticket(app)
     assert not app.exception and counts(stage3) == (1, 1)
     assert not app.success
-    assert button(app, "确认并创建工单").disabled
+    assert not any(item.label == "确认并创建内部售后工单" for item in app.button)
     assert not button(app, "查询提交结果").disabled
     posts_before = sum(method == "POST" for method, _ in transport.calls)
     app.run()
@@ -128,7 +133,7 @@ def test_ui_verification_read_failure_blocks_resubmit_until_query(api, stage3, m
 def test_ui_reloaded_executed_record_is_verified_automatically_with_no_post(api, stage3, monkeypatch):
     app, _ = start_ui(api, monkeypatch)
     analyze_ui(app)
-    button(app, "确认并创建工单").click().run()
+    submit_ticket(app)
     selected = app.session_state["selected_proposal"]
     fresh, transport = start_ui(api, monkeypatch)
     fresh.session_state["selected_proposal"] = selected
@@ -145,16 +150,16 @@ def test_ui_query_confirms_no_ticket_then_requires_explicit_resubmit(api, stage3
     app, transport = start_ui(api, monkeypatch)
     analyze_ui(app)
     transport.drop_execute_before_send = True
-    button(app, "确认并创建工单").click().run()
+    submit_ticket(app)
     assert not app.exception and counts(stage3) == (0, 0)
-    assert button(app, "确认并创建工单").disabled
+    assert not any(item.label == "确认并创建内部售后工单" for item in app.button)
     posts_before = sum(method == "POST" for method, _ in transport.calls)
     button(app, "查询提交结果").click().run()
     assert not app.exception and counts(stage3) == (0, 0)
     assert sum(method == "POST" for method, _ in transport.calls) == posts_before
     assert not any(item.label == "查询提交结果" for item in app.button)
-    assert not button(app, "确认并创建工单").disabled
-    button(app, "确认并创建工单").click().run()
+    assert not button(app, "确认并创建内部售后工单").disabled
+    submit_ticket(app)
     assert not app.exception and counts(stage3) == (1, 1)
 
 
@@ -221,8 +226,8 @@ def test_chinese_draft_conversion_requires_explicit_revision_before_approval(api
     app.run()
     assert not any(method == "POST" for method, _ in transport.calls[before:])
     assert app.text_area(key="draft_" + mixed).value == "商品故障（商品故障），状态 已受理。"
-    assert button(app, "确认并创建工单").disabled
-    assert button(app, "确认并创建工单").disabled
+    assert button(app, "确认并创建内部售后工单").disabled
+    assert button(app, "确认并创建内部售后工单").disabled
     before = len(transport.calls)
     app.run()
     assert not any(method == "POST" for method, _ in transport.calls[before:])
@@ -231,8 +236,8 @@ def test_chinese_draft_conversion_requires_explicit_revision_before_approval(api
     chinese = app.session_state["selected_proposal"]
     stored = stage3["proposals"].get(UUID(chinese))
     assert stored["revision"] == 3 and stored["draft_reply"] == app.text_area(key="draft_" + chinese).value
-    assert not button(app, "确认并创建工单").disabled
-    button(app, "确认并创建工单").click().run()
+    assert not button(app, "确认并创建内部售后工单").disabled
+    submit_ticket(app)
     approved = stage3["proposals"].get(UUID(chinese))
     assert approved["approved_payload_hash"] == approved["payload_hash"]
     assert counts(stage3) == (1, 1)
@@ -252,13 +257,13 @@ def test_unsaved_draft_blocks_confirmation_without_post(api, stage3, monkeypatch
     identity = app.session_state['selected_proposal']
     posts = sum(method == 'POST' for method, _ in transport.calls)
     app.text_area(key='draft_' + identity).set_value('尚未保存的修改').run()
-    assert button(app, '确认并创建工单').disabled
+    assert button(app, '确认并创建内部售后工单').disabled
     assert not button(app, '保存修改').disabled
     assert sum(method == 'POST' for method, _ in transport.calls) == posts
     assert counts(stage3) == (0, 0)
 
 
-@pytest.mark.parametrize('order_id', ['ORD-1009', 'ORD-DEMO-EXPIRED'])
+@pytest.mark.parametrize('order_id', ['ORD-1009', 'ORD-DEMO-EXPIRED', 'ORD-1002'])
 def test_reply_confirmation_never_creates_ticket(api, stage3, monkeypatch, order_id):
     configure_analysis(stage3, order_id=order_id, kind='reply_only')
     app, _ = start_ui(api, monkeypatch)
@@ -266,10 +271,14 @@ def test_reply_confirmation_never_creates_ticket(api, stage3, monkeypatch, order
     app.text_area(key='question').set_value(order_id + ' 坏了，退货')
     button(app, '开始分析').click().run()
     assert not app.exception
+    assert any('待确认回复' in item.value for item in app.markdown)
+    if order_id == 'ORD-1002':
+        assert any(item.label == '订单金额（仅供参考）' for item in app.metric)
+        assert any('退货期限尚未开始' in item.value for item in app.markdown)
     stored = api.get('/api/v1/proposals/' + app.session_state['selected_proposal']).json()
     assert stored['kind'] == 'reply_only', (stored['status'], stored['kind'], stored['error'])
-    assert not any(item.label == '确认并创建工单' for item in app.button)
-    button(app, '确认草稿').click().run()
+    assert not any(item.label == '确认并创建内部售后工单' for item in app.button)
+    button(app, '确认回复草稿（不建单）').click().run()
     assert not app.exception and any('尚未发送' in item.value for item in app.success)
     assert counts(stage3) == (0, 0)
 
@@ -281,7 +290,7 @@ def test_existing_ticket_does_not_block_consultation_reply(api, stage3, monkeypa
     configure_analysis(stage3, intent='order_status', kind='reply_only')
     app, _ = start_ui(api, monkeypatch)
     analyze_ui(app)
-    button(app, '确认草稿').click().run()
+    button(app, '确认回复草稿（不建单）').click().run()
     assert not app.exception
     assert counts(stage3) == (1, 1)
     assert any('草稿已确认' in item.value for item in app.success)
@@ -312,7 +321,7 @@ def test_missing_information_and_manual_processing_no_create(api, stage3, monkey
     configure_analysis(stage3, reason=None if kind == 'clarification' else 'defective', kind=kind)
     app, _ = start_ui(api, monkeypatch)
     analyze_ui(app)
-    assert not any(item.label in ('确认草稿', '确认并创建工单') for item in app.button)
+    assert not any(item.label in ('确认回复草稿（不建单）', '确认并创建内部售后工单') for item in app.button)
     assert any(('待补充' if kind == 'clarification' else '需人工处理') in item.value for item in app.markdown)
     assert counts(stage3) == (0, 0)
 
@@ -325,8 +334,75 @@ def test_other_proposal_ticket_hides_creation_and_can_be_viewed(api, stage3, mon
     app.session_state['selected_proposal'] = second['proposal_id']
     app.run()
     assert not app.exception
-    assert not any(item.label == '确认并创建工单' for item in app.button)
+    assert not any(item.label == '确认并创建内部售后工单' for item in app.button)
     button(app, '查看工单').click().run()
     assert app.radio(key='workspace').value == '售后工单'
     assert counts(stage3) == (1, 1)
     assert not any(method == 'POST' for method, _ in transport.calls)
+
+
+def test_v11_confirmation_opens_without_post_and_can_cancel(api, stage3, monkeypatch):
+    app, transport = start_ui(api, monkeypatch)
+    analyze_ui(app)
+    assert any("待确认建单" in item.value for item in app.markdown)
+    before = list(transport.calls)
+    button(app, "确认并创建内部售后工单").click().run()
+    assert not app.exception
+    assert counts(stage3) == (0, 0)
+    assert not any(method == "POST" for method, _ in transport.calls[len(before):])
+    button(app, "取消建单").click().run()
+    assert counts(stage3) == (0, 0)
+    assert not any(method == "POST" for method, _ in transport.calls[len(before):])
+    assert not any(item.label == "最终确认建单" for item in app.button)
+
+
+def test_v11_evidence_does_not_mix_orders_or_conflicting_values():
+    from src.ui.presentation import proposal_facts, decision_deadline
+
+    def order_read(order_id, status):
+        return {"name": "get_order", "args": {"order_id": order_id},
+                "result": {"ok": True, "data": {"order_id": order_id, "status": status}}}
+
+    payload = {"evidence": [order_read("ORD-1002", "shipped"), order_read("ORD-1009", "delivered")]}
+    order, _, _ = proposal_facts(payload, "ORD-1009")
+    assert order["status"] == "delivered"
+    payload["evidence"].append(order_read("ORD-1009", "shipped"))
+    order, _, eligibility = proposal_facts(payload, "ORD-1009")
+    assert order == {}
+    assert decision_deadline(order, eligibility, None, "local").startswith("无法计算")
+
+
+def test_v11_open_confirmation_cannot_submit_new_revision(api, stage3, monkeypatch):
+    app, transport = start_ui(api, monkeypatch)
+    analyze_ui(app)
+    old_id = app.session_state["selected_proposal"]
+    old = stage3["proposals"].get(UUID(old_id))
+    button(app, "确认并创建内部售后工单").click().run()
+    revised = api.post(f"/api/v1/proposals/{old_id}/revisions", json={
+        "expected_revision": old["revision"], "expected_payload_hash": old["payload_hash"],
+        "draft_reply": "您好，请核对更新后的退货说明。",
+    })
+    assert revised.status_code in (200, 201)
+    button(app, "最终确认建单").click().run()
+    assert not app.exception
+    assert app.session_state["selected_proposal"] != old_id
+    assert not any(method == "POST" and url.endswith("/confirm-and-create") for method, url in transport.calls)
+    assert counts(stage3) == (0, 0)
+
+
+def test_v111_reason_disagreement_is_marked_as_ai_extraction(api, stage3, monkeypatch):
+    configure_analysis(stage3, order_id="ORD-1002", reason="defective", kind="reply_only")
+    app, transport = start_ui(api, monkeypatch)
+    button(app, "新建请求").click().run()
+    question = "ORD-1002 还没签收，我已经不需要了，想退货。"
+    app.text_area(key="question").set_value(question)
+    button(app, "开始分析").click().run()
+    visible = [item.value for item in app.markdown]
+    assert any("申请原因（AI 提取，待人工核对）" in value for value in visible)
+    assert any("客户原话与补充记录" in value for value in visible)
+    assert any("资格依据（规则判断）" in value for value in visible)
+    assert any(question in value for value in visible)
+    assert any("与客户原话可能不一致" in item.value for item in app.warning)
+    assert not any(item.label == "确认并创建内部售后工单" for item in app.button)
+    assert any(method == "POST" for method, _ in transport.calls)
+    assert counts(stage3) == (0, 0)

@@ -10,15 +10,17 @@
 
 ## 界面与操作
 
-下列为当前版本的实际浏览器截图，来自**隔离数据库、合成数据、FakeLLM 固定脚本、固定 Clock、真实只读 MCP**，不代表真实模型回答质量。截图采用窄视口，桌面界面沿用相同流程与组件。
+V1.1.1 在请求详情页增加审核跳转，将订单查找与补录放在同一首屏，并标注客户原话、AI 提取、业务查询和规则判断的来源。申请原因可能与原话不一致时，页面提示人工核对。
 
-| 请求列表与搜索 | 信息不足时追问 |
-| --- | --- |
-| ![请求列表](docs/screenshots/requests.png) | ![待补充订单号](docs/screenshots/needs-info.png) |
+截图来自 1440 × 900 浏览器验收，使用隔离 PostgreSQL、合成订单、FakeLLM、固定 Clock 和真实只读 MCP。
 
-| 核对方案后明确确认 | 创建成功后查看工单 |
+| 可建单：核对资格与依据 | 可建单：确认操作后果 |
 | --- | --- |
-| ![方案确认](docs/screenshots/proposal.png) | ![售后工单详情](docs/screenshots/ticket.png) |
+| ![待确认建单](docs/screenshots/v1.1.1/A-eligible-first.png) | ![建单确认弹层](docs/screenshots/v1.1.1/A-confirmation-dialog.png) |
+
+| 未签收：仅确认回复草稿 | 缺少订单号：查找并补录 |
+| --- | --- |
+| ![待确认回复及来源提示](docs/screenshots/v1.1.1/B-ineligible-first.png) | ![待补充订单号](docs/screenshots/v1.1.1/C-missing-order-first.png) |
 
 回复草稿始终标记“尚未发送”。申请已受理只表示工单已记录，不代表退款或退货已经完成。提交响应不确定时查询原结果，不自动重新申请。
 
@@ -47,7 +49,9 @@ flowchart LR
 
 ## 可核验的评测结果
 
-以下数字来自2026年11月7日归档运行；新修改的工程检查另见[整理验收](docs/repository_readiness.md)。
+V1.1.1 使用 FakeLLM 和隔离 PostgreSQL 完成全量工程回归，412 项通过，1 项既有 Authlib 弃用警告。隔离浏览器验证了建单并回读、仅确认回复、补录后生成新版三条流程。
+
+下表保留 2026 年 11 月 7 日归档的评测结果。
 
 | 指标 | 结果 | 限制 |
 | --- | --- | --- |

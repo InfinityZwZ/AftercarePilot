@@ -8,10 +8,10 @@ def test_archive_restore_and_single_purge_ui(api, stage3, monkeypatch):
     assert not any('/audit-logs' in url or url.endswith('/history') for _, url in transport.calls)
     button(app, '归档请求').click().run()
     assert not app.exception
-    assert button(app, '确认并创建工单').disabled
+    assert not any(item.label == '确认并创建内部售后工单' for item in app.button)
     assert app.text_area(key='draft_' + app.session_state['selected_proposal']).disabled
     button(app, '恢复请求').click().run()
-    assert not app.exception and not button(app, '确认并创建工单').disabled
+    assert not app.exception and not button(app, '确认并创建内部售后工单').disabled
     button(app, '归档请求').click().run()
     button(app, '查看永久清除说明').click().run()
     assert not app.exception

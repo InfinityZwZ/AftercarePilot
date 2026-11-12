@@ -72,9 +72,12 @@ def test_api_and_ui_missing_order_then_continue_same_request(api, stage3, monkey
     button(app, '开始分析').click().run()
     assert not app.exception and not app.error
     assert any('待补充' in item.value for item in app.markdown)
-    assert any('订单号' in item.value for item in app.warning)
+    assert any('缺少订单号' in item.value for item in app.markdown)
+    assert next(item for item in app.expander if item.label == '查找订单').proto.expanded
     first = stage3['proposals'].get(UUID(app.session_state['selected_proposal']))
     assert first['status'] == 'needs_info' and first['usage']['llm_calls'] == 0
+    assert '请提供订单号' in first['draft_reply']
+    assert '没有创建工单' not in first['draft_reply']
     assert counts(stage3) == (0, 0) and model.calls == 0
     main.app.dependency_overrides[get_analyzer] = lambda: AnalysisAgent(FakeLLM(), stage3['gateway'])
     app.text_area(key='question').set_value('ORD-1009')
@@ -83,6 +86,42 @@ def test_api_and_ui_missing_order_then_continue_same_request(api, stage3, monkey
     current = stage3['proposals'].get(UUID(app.session_state['selected_proposal']))
     assert current['request_id'] == first['request_id'] and current['revision'] == 2
     assert current['kind'] == 'return_request' and current['status'] == 'pending_approval'
+    assert counts(stage3) == (0, 0)
+
+
+def test_v11_multiple_orders_require_one_explicit_selection(api, stage3, monkeypatch):
+    app, transport = start_ui(api, monkeypatch)
+    button(app, '新建请求').click().run()
+    original = 'ORD-1009 和 ORD-1002 的商品坏了，我想退货'
+    app.text_area(key='question').set_value(original)
+    button(app, '开始分析').click().run()
+    first = stage3['proposals'].get(UUID(app.session_state['selected_proposal']))
+    assert first['payload']['missing_fields'] == ['single_order_id']
+    assert any('请选择一笔具体订单' in item.value for item in app.markdown)
+    assert app.selectbox(key='order_picker').value is None
+    before = sum(method == 'POST' for method, _ in transport.calls)
+    app.text_area(key='question').set_value('ORD-1009 和 ORD-1002')
+    button(app, '补充信息并分析').click().run()
+    assert sum(method == 'POST' for method, _ in transport.calls) == before
+    app.text_area(key='question').set_value('ORD-1009 音箱坏了，我想退货')
+    button(app, '补充信息并分析').click().run()
+    current = stage3['proposals'].get(UUID(app.session_state['selected_proposal']))
+    assert current['request_id'] == first['request_id'] and current['revision'] == 2
+    assert current['kind'] == 'return_request' and current['payload']['order_id'] == 'ORD-1009'
+    assert stage3['proposals'].get(UUID(first['proposal_id']))['source_question'] == original
+    assert counts(stage3) == (0, 0)
+
+
+def test_missing_order_cannot_submit_before_refill(api, stage3, monkeypatch):
+    app, transport = start_ui(api, monkeypatch)
+    button(app, "新建请求").click().run()
+    app.text_area(key="question").set_value("音箱坏了，我想退货")
+    button(app, "开始分析").click().run()
+    proposal = app.session_state["selected_proposal"]
+    before = list(transport.calls)
+    button(app, "补充信息并分析").click().run()
+    assert app.session_state["selected_proposal"] == proposal
+    assert not any(method == "POST" for method, _ in transport.calls[len(before):])
     assert counts(stage3) == (0, 0)
 
 

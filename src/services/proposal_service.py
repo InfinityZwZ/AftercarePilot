@@ -78,7 +78,7 @@ class ProposalService:
                 error = error or {"code": "ANALYSIS_FAILED", "message": "Analysis did not produce a validated Proposal"}
                 payload = HandoffPayload(**{key: identity[key] for key in ("proposal_id", "request_id", "revision")},
                                          kind="handoff", action="none", summary="分析未完成" if identity["language"] == "zh" else "Analysis failed",
-                                         draft_reply="分析未完成，请重新分析或转人工；没有创建工单。" if identity["language"] == "zh" else "Analysis failed. Please retry or hand off; no ticket was created.",
+                                         draft_reply="您好，目前还无法核实您的请求。" if identity["language"] == "zh" else "We could not verify your request yet.",
                                          language=identity["language"], evidence_refs=[], evidence=state.get("evidence", []),
                                          handoff_reason=error["code"]).model_dump(mode="json")
                 row.status, row.error = "failed", error

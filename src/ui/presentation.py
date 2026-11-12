@@ -71,6 +71,74 @@ def status_name(value):
     return STATUS_NAMES.get(value, "未知状态")
 
 
+MISSING_FIELD_LABELS = {
+    "order_id": "缺少订单号",
+    "single_order_id": "请选择一笔具体订单",
+    "reason": "缺少申请原因",
+}
+
+
+def reason_needs_review(reason, questions):
+    """Flag clear conflicting wording without inferring a replacement reason."""
+    patterns = {
+        "defective": r"坏了|故障|无法开机|用不了",
+        "damaged": r"破损|摔坏|外包装损坏",
+        "wrong_item": r"发错|寄错|收到的不是",
+        "not_as_described": r"与描述不符|跟描述不一样",
+        "changed_mind": r"不再需要|不需要|不想要|不喜欢",
+        "too_late": r"送达过晚|送得太晚|配送延迟|到货太晚",
+    }
+    explicit = {key for key, pattern in patterns.items()
+                if any(re.search(pattern, text) for text in questions)}
+    return bool(reason and explicit and explicit != {reason})
+
+
+def proposal_facts(payload, order_id):
+    """Resolve only facts belonging to the current proposal's order and policy."""
+    facts = payload.get("facts") or {}
+
+    def read_fact(key, tool, identity_key, identity, *, reason=None):
+        if not identity:
+            return {}
+        candidates = [facts.get(key) or {}]
+        candidates.extend(
+            item["result"].get("data") or {}
+            for item in payload.get("evidence", [])
+            if item["name"] == tool and item["result"]["ok"]
+            and item.get("args", {}).get(identity_key) == identity
+            and (reason is None or item.get("args", {}).get("reason") == reason)
+        )
+        merged = {}
+        for candidate in candidates:
+            if candidate.get(identity_key) != identity or candidate.get("found") is False:
+                continue
+            for field, value in candidate.items():
+                if field in merged and merged[field] != value:
+                    return {}
+                merged[field] = value
+        return merged
+
+    order = read_fact("order", "get_order", "order_id", order_id)
+    policy_id = order.get("policy_id") if order else payload.get("policy_id")
+    policy = read_fact("policy", "get_return_policy", "policy_id", policy_id)
+    eligibility = read_fact("eligibility", "check_return_eligibility", "order_id", order_id,
+                            reason=payload.get("reason"))
+    if not order or (eligibility.get("policy_id") and eligibility["policy_id"] != policy_id):
+        eligibility = {}
+    return order, policy, eligibility
+
+
+def decision_deadline(order, eligibility, deadline, timezone):
+    codes = eligibility.get("reason_codes") or []
+    if deadline:
+        return local_time(deadline, timezone)
+    if "ORDER_NOT_DELIVERED" in codes and order.get("status") not in (None, "delivered", "cancelled"):
+        return "退货期限尚未开始"
+    if "ORDER_CANCELLED" in codes:
+        return "不适用（订单已取消）"
+    return "无法计算（缺少有效的签收或政策依据）"
+
+
 def reason_name(value):
     return REASON_NAMES.get(value, "未提供" if not value else "其他原因")
 

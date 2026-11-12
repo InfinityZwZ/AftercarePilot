@@ -35,6 +35,9 @@ Every ToolMessage supplies a call_id; reference the successful evidence IDs, not
 Once evidence is sufficient, return JSON with kind (return_request, reply_only, clarification, handoff), summary,
 draft_reply, evidence_refs (an array of evidence ID strings, [] when none, never null) and no extra fields. Only eligible returns with an explicit reason may be return_request.
 Ineligible returns are reply_only; unknown facts are handoff. A draft is unsent and no ticket has been created.
+Write draft_reply for the customer. Keep internal approval, ticket creation status and database operations out of the draft.
+If eligibility is ineligible, explain the verified reason and do not offer immediate return or refund acceptance.
+If eligibility is unknown, say what needs verification. For eligible orders describe eligibility without promising completion.
 Use the requested language. For zh, write summary and draft_reply entirely in Chinese; preserve identifiers and proper product names.
 Use Chinese business labels instead of internal English statuses, reason codes or protocol terminology in the narrative.
 Write Chinese currency names and omit redundant internal codes in parentheses for Chinese replies.
@@ -130,8 +133,8 @@ class AnalysisAgent:
 
     def _clarification(self, state, entities, missing):
         labels = {"order_id": "订单号", "single_order_id": "一个明确的订单号", "reason": "退货原因"}
-        question = ("请补充：" + "、".join(labels[key] for key in missing) + "。没有创建工单。"
-                    if state["language"] == "zh" else "Please provide " + ", ".join(missing) + ". No ticket has been created.")
+        question = ("您好，为便于核实，请提供" + "、".join(labels[key] for key in missing) + "。"
+                    if state["language"] == "zh" else "Please provide " + ", ".join(missing) + " so we can check your request.")
         payload = ClarificationPayload(**self._identity(state), kind="clarification",
             summary="需要补充信息" if state["language"] == "zh" else "More information needed",
             draft_reply=question, evidence_refs=[], evidence=[], missing_fields=missing)
@@ -157,8 +160,8 @@ class AnalysisAgent:
         if unsupported or vague_damage:
             intent = 'unsupported' if unsupported else 'general'
             entities=dict(order_id=order_id,reason=None,language=state['language'],intent=intent)
-            reply=('当前工作台不支持这项操作，需要由操作员人工核实处理。尚未转交其他系统，也未创建工单。' if unsupported else
-                   '请进一步说明商品问题及希望如何处理，需要由操作员人工核实。尚未转交其他系统，也未创建工单。')
+            reply = ("您好，这项请求需要人工核实后才能答复。" if unsupported else
+                     "您好，请进一步说明商品问题以及您希望如何处理，便于我们核实。")
             payload=HandoffPayload(**self._identity(state),kind='handoff',summary='需要人工核实',draft_reply=reply,
                 evidence_refs=[],evidence=[],facts={'intent':intent},handoff_reason='需要人工核实处理')
             return dict(entities=entities,intent=intent,missing_fields=[],payload=payload.model_dump(mode='json'),
@@ -323,8 +326,10 @@ class AnalysisAgent:
         self.remember(state)
         correction=SystemMessage(content='Rewrite the last JSON draft once. Remove every claim or promise of transfer, colleague follow-up, notification, refund or sending. '
             'No application has been accepted and no ticket has been created yet. Do not claim 申请已受理 or 工单已创建. '
-            'Do not change kind, evidence IDs or verified business facts. For eligible returns say the operator must confirm before creating a ticket. '
-            'For handoff say an operator needs to verify it, and no transfer has occurred. Return valid JSON only; arrays cannot be null. No tool calls.')
+            'Keep internal approval, ticket creation status and database operations out of the customer draft. '
+            'Do not change kind, evidence IDs or verified business facts. If ineligible, explain the verified reason without offering immediate acceptance. '
+            'If eligible, explain eligibility without mentioning internal approval. For handoff explain what needs verification. '
+            'Return valid JSON only; arrays cannot be null. No tool calls.')
         history=[SystemMessage(content=DECISION_PROMPT+'\nEntities: '+json.dumps(state['entities'],ensure_ascii=False)),*state['messages'],correction]
         try:
             response=await self._ask(state,history)
@@ -338,8 +343,10 @@ class AnalysisAgent:
     def _validate_once(self, state):
         try:
             draft = ModelDraft.model_validate(state["model_draft"])
-            if re.search(r"已(?:经)?(?:将.{0,30})?(?:转交|转接|转人工)|后续.{0,12}同事.{0,12}跟进|留意.{0,8}通知|已(?:完成|成功)?退款|(?:申请|工单)已(?:经|成功)?(?:受理|创建|提交)|已(?:经|成功)?(?:受理|创建|提交)(?:了)?(?:.{0,8})(?:申请|工单)", draft.draft_reply):
+            if re.search(r"已(?:经)?(?:将.{0,30})?(?:转交|转接|转人工)|后续.{0,12}同事.{0,12}跟进|留意.{0,8}通知|已(?:完成|成功)?退款|(?:申请|工单)已(?:经|成功)?(?:受理|创建|提交)|已(?:经|成功)?(?:受理|创建|提交)(?:了)?(?:.{0,8})(?:申请|工单)|已(?:经|成功)?发送|(?:reply|message|refund) (?:has been|was) (?:sent|issued|completed)", draft.draft_reply, re.IGNORECASE):
                 raise AppError('UNSUPPORTED_COMPLETION_CLAIM','Draft claims an unavailable external action',502)
+            if re.search(r"待审核草稿|数据库|审批记录|(?:批准|审批)后|操作员令牌|system logs|database records", draft.draft_reply, re.IGNORECASE):
+                raise AppError("UNSUPPORTED_COMPLETION_CLAIM", "Draft exposes internal workflow details", 502)
             evidence = [Evidence.model_validate(item) for item in state["evidence"]]
             selected = selected_evidence(evidence, draft.evidence_refs)
             named = {item.name: item for item in selected}
@@ -373,6 +380,13 @@ class AnalysisAgent:
                     if policy.policy_id != named["get_return_policy"].args["policy_id"]:
                         raise AppError("EVIDENCE_INCONSISTENT", "Returned policy identity does not match the read", 502)
                     policy_id = policy.policy_id
+            qualification = facts.get("eligibility") or {}
+            if qualification.get("eligibility") == "ineligible":
+                positive = r"(?<!不)(?<!无法)(?<!不能)(?:可以|可直接|符合|允许)(?:直接|立即|现在)?(?:申请退货|退货申请|退款|退货条件)"
+                contradicts_delivery = ("ORDER_NOT_DELIVERED" in qualification.get("reason_codes", [])
+                                         and re.search(r"已(?:经)?签收", draft.draft_reply))
+                if re.search(positive, draft.draft_reply) or contradicts_delivery:
+                    raise AppError("UNSUPPORTED_COMPLETION_CLAIM", "Draft contradicts verified return eligibility", 502)
             common = {**self._identity(state), "order_id": order_id, "policy_id": policy_id,
                       "summary": draft.summary, "draft_reply": draft.draft_reply,
                       "evidence_refs": draft.evidence_refs, "evidence": evidence}

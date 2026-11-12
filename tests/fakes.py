@@ -30,8 +30,21 @@ class FakeLLM:
         return AIMessage(content="", tool_calls=[dict(name=name, args=value, id=f"call-{self.sequence}-{index}") for index, (name, value) in enumerate(args)])
 
     def draft(self, messages):
-        refs = [json.loads(message.content)["call_id"] for message in messages if isinstance(message, ToolMessage) and json.loads(message.content)["result"]["ok"]]
-        return AIMessage(content=json.dumps(dict(kind=self.kind, summary="建议按已读取事实审核售后申请。", draft_reply="这是待审核草稿。批准后可提交售后申请，目前没有发生退款或发送消息。", evidence_refs=refs)))
+        reads = [(message.name, json.loads(message.content)) for message in messages if isinstance(message, ToolMessage)]
+        refs = [read["call_id"] for _, read in reads if read["result"]["ok"]]
+        eligibility = next((read["result"].get("data") or {} for name, read in reads
+                            if name == "check_return_eligibility" and read["result"]["ok"]), {})
+        state = eligibility.get("eligibility")
+        summary, reply = "请核对已查询的信息。", "您好，感谢您提供相关信息。"
+        if state == "eligible":
+            summary = "订单符合当前退货申请条件。"
+            reply = "您好，经核对，您的订单符合当前退货申请条件。"
+        elif state == "ineligible":
+            summary = "当前订单不符合退货申请条件。"
+            reply = "您好，经核对，您的订单当前不符合退货申请条件。"
+            if "ORDER_NOT_DELIVERED" in eligibility.get("reason_codes", []):
+                reply = "您好，您的订单尚未签收，退货期限还未开始，目前无法申请退货。"
+        return AIMessage(content=json.dumps(dict(kind=self.kind, summary=summary, draft_reply=reply, evidence_refs=refs)))
 
     async def ainvoke(self, messages):
         self.history.append(list(messages))
