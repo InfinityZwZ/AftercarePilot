@@ -1,0 +1,5 @@
+{
+  "订单与物流信息": "项目\n\n\t\n\n内容\n\n\n\n\n订单号\n\n\t\n\nORD-1009\n\n\n\n\n订单状态\n\n\t\n\n已签收\n\n\n\n\n订单金额\n\n\t\n\n89.99 美元\n\n\n\n\n签收时间\n\n\t\n\n2026-10-08 20:00:00（本地时间）\n\n\n\n\n商品\n\n\t\n\n蓝牙音箱\n\n\n\n\n运单号\n\n\t\n\nDEMO-TRACK-1009\n\n\n\n\n物流状态\n\n\t\n\n已签收\n\n\n\n\n预计送达日期\n\n\t\n\n2026-10-08",
+  "适用退货政策": "项目\n\n\t\n\n内容\n\n\n\n\n政策编号\n\n\t\n\ndemo-return\n\n\n\n\n政策版本\n\n\t\n\n第 1 版\n\n\n\n\n申请期限\n\n\t\n\n签收后 14 天，包含截止时刻\n\n\n\n\n允许原因\n\n\t\n\n不再需要、商品破损、商品故障、商品与描述不符、送达过晚、收到错误商品\n\n\n\n\n适用范围\n\n\t\n\n整单\n\n\n\n\n政策状态\n\n\t\n\n启用",
+  "退货资格判断": "项目\n\n\t\n\n内容\n\n\n\n\n订单号\n\n\t\n\nORD-1009\n\n\n\n\n申请资格\n\n\t\n\n符合申请条件\n\n\n\n\n判断依据\n\n\t\n\n符合当前退货政策\n\n\n\n\n判断时间\n\n\t\n\n2026-10-09 20:00:00（本地时间）\n\n\n\n\n申请截止\n\n\t\n\n2026-10-22 20:00:00（本地时间）\n\n\n\n\n申请金额\n\n\t\n\n89.99 美元"
+}

@@ -1,0 +1,26 @@
+[
+  {
+    "mode": "immediate",
+    "requestId": "2ea03b5a-9ee8-40b9-9b6e-67e12244aa2e",
+    "beforeClick": "音箱坏了，我想申请退货。",
+    "saved": "音箱坏了，我想申请退货。",
+    "revision": 2,
+    "status": "needs_info"
+  },
+  {
+    "mode": "immediate",
+    "requestId": "03f495d0-ef30-4169-b5af-811125dfb39c",
+    "beforeClick": "音箱坏了，我想申请退货。",
+    "saved": "音箱坏了，我想申请退货。\n订单号：ORD-1009",
+    "revision": 2,
+    "status": "analyzing"
+  },
+  {
+    "mode": "wait-for-refill",
+    "requestId": "4d4580d0-a47e-4052-82ed-9b01453dbdac",
+    "beforeClick": "音箱坏了，我想申请退货。\n订单号：ORD-1009",
+    "saved": "音箱坏了，我想申请退货。\n订单号：ORD-1009",
+    "revision": 2,
+    "status": "analyzing"
+  }
+]

@@ -1,0 +1,81 @@
+{
+  "B": {
+    "geometry": {
+      "width": 1440,
+      "height": 900,
+      "contentHeight": 2002,
+      "horizontalOverflow": false,
+      "items": {
+        "关键判断依据": {
+          "top": 394,
+          "bottom": 419
+        },
+        "确认回复草稿（不建单）": {
+          "top": 1410,
+          "bottom": 1450
+        }
+      }
+    },
+    "before": 1,
+    "draft": "您好，您的订单尚未签收，退货期限还未开始，目前无法申请退货。",
+    "after": 1
+  },
+  "C": {
+    "requestId": "98642a32-f0de-4d93-8dce-904da9a22c3d",
+    "revisionBefore": 1,
+    "draft": "您好，为便于核实，请提供订单号。",
+    "before": 1,
+    "geometry": {
+      "width": 1440,
+      "height": 900,
+      "contentHeight": 2078,
+      "horizontalOverflow": false,
+      "items": {
+        "缺少订单号": {
+          "top": 294,
+          "bottom": 320
+        },
+        "关键判断依据": {
+          "top": 860,
+          "bottom": 886
+        },
+        "补充信息并分析": {
+          "top": 551,
+          "bottom": 591
+        }
+      }
+    },
+    "pickerValue": "音箱坏了，我想申请退货。\n订单号：ORD-1009",
+    "revisionAfter": 2,
+    "after": 1
+  },
+  "A": {
+    "requestId": "d875cb70-4cdb-4977-a24a-7395777ce0c0",
+    "before": 1,
+    "geometry": {
+      "width": 1440,
+      "height": 900,
+      "contentHeight": 1930,
+      "horizontalOverflow": false,
+      "items": {
+        "关键判断依据": {
+          "top": 394,
+          "bottom": 419
+        },
+        "确认并创建内部售后工单": {
+          "top": 1338,
+          "bottom": 1378
+        }
+      }
+    },
+    "draft": "您好，经核对，您的订单符合当前退货申请条件。",
+    "afterCancel": 1,
+    "ticket": "AS-9c79e14c-ce41-44e3-846a-e767eacb2e9b",
+    "verification": {
+      "ticket_row_found": true,
+      "proposal_executed": true,
+      "success_audit_found": true
+    },
+    "afterConfirm": 2
+  }
+}
